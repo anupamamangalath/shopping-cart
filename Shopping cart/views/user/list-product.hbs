@@ -1,0 +1,172 @@
+{{!--
+<div class="list-pdt" style="margin-top:7rem;">
+    <div class="container ">
+        <div class="row">
+            {{#each products}}
+            <div class="col-md-3  col-sm-6 col-xs-12 p-3">
+                <div class="card" style="width: 15rem; height:25rem;">
+                    <img class="card-img-top" style="height: 14rem;" src="/product-images/{{this._id}}.jpg"
+                        alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.name}}</h5>
+                        <h7 class="card-text" style="font-weight: bold;">₹ {{this.price}}</h7>
+                        <p class="card-text">{{this.description}}</p>
+                        <button onclick="addToCart('{{this._id}}','{{this.name}}')" class="btn btn-primary">Add to
+                            Cart</button>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
+        </div>
+    </div>
+</div>
+
+--}}
+
+<div class="list-pdt" style="margin-top:5rem; margin-bottom:13rem">
+    <div class="container ">
+        <div class="row" id="items">
+            <div>
+            <nav class="navbar navbar-light justify-content-center mt-4">
+                <form class="form-inline">
+                    <input class="form-control form-control-lg mr-sm-2"  type="search" placeholder="Search"
+                        aria-label="Search" id="search" onkeyup="myFunction()" style="width: 18rem; height: 2.5rem; color: #193319;">
+                    <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+                </form>
+            </nav>
+            </div>
+            <br>
+            
+        <div class="card-deck" id="card-deck">
+            {{#each products}}
+            <div class="col-md-3  col-sm-6 col-xs-12 p-3">
+                
+                    <div class="card" style="width: 15rem; height:25rem;">
+                        <img class="card-img-top" style="height: 14rem;" src="/product-images/{{this._id}}.jpg"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <div>
+                                <div class="column">
+                                    <h5 class="card-title">{{this.name}}</h5>
+                                    <h6>₹ {{this.price}}</h6>
+                                </div>
+                                <div class="column">
+                                    <button onclick="addToCart('{{this._id}}','{{this.name}}','{{../user}}')"
+                                        class="btn add-btn float-right"><span
+                                            class="material-icons">shopping_cart</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <a href="/quickView/{{this._id}} " type="button" class="btn quickView-btn"><span>Quick
+                                    View</span></a>
+                            {{!-- <a href="/quickView/{{this._id}}" type="button" class="">Quick View</button> --}}
+                                {{!-- <h7 class="card-text" style="font-weight: bold;">₹ {{this.price}}</h7>
+                                <p class="card-text">{{this.description}}</p>--}}
+                                {{!-- <button onclick="addToCart('{{this._id}}','{{this.name}}')"
+                                    class="btn btn-primary">Add to
+                                    Cart</button> --}}
+                        </div>
+                    </div>
+            </div>
+            {{/each}}
+            </div>
+            {{!-- toolbar=no,location=no,status=no,menubar=no,scrollbars=no, --}}
+
+        </div>
+    </div>
+
+</div>
+<script>
+   function myFunction() {
+    var input, filter, cards, cardContainer, h5, title, i;
+    input = document.getElementById("search");
+   
+    filter = input.value.toUpperCase();
+    cardContainer = document.getElementById("card-deck");
+    cards = cardContainer.getElementsByClassName("card");
+    for (i = 0; i < cards.length; i++) {
+        title = cards[i].querySelector(".card-body h5.card-title");
+        if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+            cards[i].style.display = "";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
+ /*$(document).ready(function(){
+  $("#search").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#card-deck *").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});*/
+/*$('#search').keyup(function (){
+    $('.card').removeClass('d-none');
+    var filter = $(this).val(); // get the value of the input, which we filter on
+    $('.card-deck').find('.card .card-body h4:not(:contains("'+filter+'"))').parent().parent().addClass('d-none');
+})*/
+
+</script>
+<style>
+    body{
+        background: rgba(222, 184, 135, 0.089);
+    }
+    .column {
+        float: left;
+        width: 50%;
+    }
+
+    .add-btn:hover span {
+        display: none
+    }
+
+    .add-btn:hover:before {
+        content: "Add to Cart"
+    }
+
+
+
+    .quickView-btn {
+        background: antiquewhite;
+        color: #d09443;
+
+        margin-top: 2rem;
+
+        width: 100%;
+        height: 3rem;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: larger;
+        letter-spacing: 4px
+    }
+
+    .quickView-btn:hover {
+        background: gray;
+    }
+
+    .quickView-btn:hover span {
+        display: none
+    }
+
+    .quickView-btn:hover:before {
+        content: "View Details"
+    }
+
+    .card {
+        width: 16rem;
+        height: 25rem;
+        margin: 3rem;
+        transition: transform .2s;
+
+    }
+
+
+    .card:hover {
+        -ms-transform: scale(1.2);
+        /* IE 9 */
+        -webkit-transform: scale(1.2);
+        /* Safari 3-8 */
+        transform: scale(1.2);
+    }
+</style>

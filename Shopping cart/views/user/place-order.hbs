@@ -1,0 +1,153 @@
+<section style="margin-top:7rem;margin-bottom:14rem;">
+
+    <div class="container">
+        <form id="checkout-form" method="POST" action="">
+            <div class="row">
+                <div class="col-md-6 float-left p-5">
+                    <h3 class="pb-4 heading" >Enter Delivery Details</h3>
+                    <div>
+                        <label for="" class="label">Address</label>
+                        <input type="text" class="form-control " id="address" name="addresss"
+                            placeholder="Enter address">
+
+                        <label for="" class="label">Pincode</label>
+                        <input type="text" class="form-control" id="pincode" name="pincode" placeholder="Enter pincode">
+
+                        <label for="" class="label">Mobile</label>
+                        <input type="text" class="form-control" id="mobile" name="mobile"
+                            placeholder="Enter mobile number">
+                        <input type="text" id="userId" name="userId" value="{{user._id}}" hidden>
+                    </div>
+
+                </div>
+                <div class="col-md-6 float-left p-5  mt-5 ">
+                    <div class="card" style="width: 18rem;">
+                        <h5 class="text-center mt-4" style="font-size:1.6rem;">Total Amount : {{total}}</h4>
+                            <hr>
+                            <div class="card-body">
+                                <p style="font-size: larger;">Payment Method</p>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="payment-method"
+                                        id="flexRadioDefault1" value="COD">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        COD
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="payment-method"
+                                        id="flexRadioDefault2" value="online payment" >
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Online Payment
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn checkout-btn float-right mt-4">Checkout</button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</section>
+<style>
+    .heading{
+        color: rgb(19, 17, 17);
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 2.5rem;
+        }
+    .label{
+        font-family: 'Times New Roman', Times, serif;
+        font-size: larger;
+        color: #a05252;
+    }
+    .form-control{
+        background-color: rgb(47 5 11 / 16%);
+       
+    }
+    .card{
+        background: rgb(215 176 176);
+        color: rgb(70, 1, 1);
+        font-family: 'Times New Roman', Times, serif;
+        border-color: brown;
+        
+    }
+    .form-check-label{
+        font-size: 1.1rem;
+    }
+    .checkout-btn{
+        background: #227e47;
+        color: burlywood;
+    }
+    
+</style>
+
+<script>
+    $("#checkout-form").submit((event)=> {
+        event.preventDefault()
+        $.ajax({
+            url: '/place-order',
+            data: $('#checkout-form').serialize(),                  //to get all data in form, 
+            method: 'post',
+            success: (response) => {
+                //console.log(response)
+                if (response.codSuccess) {
+                    alert("Placing your order")
+                    location.href = '/order-success'
+                } 
+                else {
+                    razorpayPayment(response)
+
+                }
+            }
+        })
+    })
+    function razorpayPayment(order) {
+        var options = {
+            "key": "rzp_test_t57HH3Wv7hqorW", // Enter the Key ID generated from the Dashboard
+            "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "currency": "INR",
+            "name": "Anupama",
+            "description": "Test Transaction",
+            "image": "https://example.com/your_logo",
+            "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "handler": function (response) {
+                //  alert(response.razorpay_payment_id);
+                //alert(response.razorpay_order_id);
+                //alert(response.razorpay_signature) --}}
+
+                verifyPayment(response, order)
+            },
+            "prefill": {
+                "name": "Gaurav Kumar",
+                "email": "gaurav.kumar@example.com",
+                "contact": "9999999999"
+            },
+            "notes": {
+                "address": "Razorpay Corporate Office"
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    }
+    function verifyPayment(payment, order) {
+        console.log("function")
+        $.ajax({
+            url: '/verify-payment',
+            data: {
+                payment,
+                order
+            },
+            method:'post',
+            success:(response)=>{
+                if(response.status){
+                    location.href='/order-success'
+                }else{
+                    alert("payment failed")
+                }
+            }
+        })
+    }
+</script>

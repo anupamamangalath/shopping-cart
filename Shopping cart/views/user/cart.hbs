@@ -1,0 +1,143 @@
+<section style="margin-top:7rem;margin-bottom:14rem" >
+    <div class="container col-xs-12">
+        {{#if totalvalue}}
+        <table class="table mt-5 col-xs-12">
+            <thead>
+                <tr>
+                    {{!-- <th scope="col">No</th> --}}
+                    <th scope="col" class="table-head">Item</th>
+                    <th scope="col" class="table-head">Title</th>
+                    <th scope="col" class="table-head">Price</th>
+                    <th scope="col" class="table-head">Quantity</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {{#each products}}
+                <tr>
+                    {{!-- // <th scope="row">{{inc @index}}</th> --}}
+                    <td><img style="width: 50px; height: 50px" src="/product-images/{{this.productdetail._id}}.jpg">
+                    </td>
+                    <td>{{this.productdetail.name}}</td>
+                    <td>₹{{this.productdetail.price}}</td>
+                    <td>
+
+                        <button class="cart-item-count mr-3"
+                            onclick="changeQuantity('{{this._id}}','{{this.productdetail._id}}','{{../user/_id}}',-1)">-</button>
+                        {{!-- ../user used as inside products loop cant use another obj --}}
+
+                        <span id="{{this.productdetail._id}}">{{this.quantity}}</span>
+
+                        <button class="cart-item-count ml-3"
+                            onclick="changeQuantity('{{this._id}}','{{this.productdetail._id}}','{{../user/_id}}',1)">+</button>
+
+                    </td>
+
+                    <td> {{!-- instead of {{this._id}} we can pass ?id={{this._id}}&name={{this.name}} --}}
+                        <button class="btn remove-btn"
+                            onclick="remove('{{this._id}}','{{this.productdetail._id}}')">Remove</button>
+                    </td>
+                </tr>
+                {{/each}}
+
+            </tbody>
+        </table>
+        <hr>
+        <div class="float-right pr-5">
+            <h3 class="mr-5 float-left" style="font-family: 'Times New Roman', Times, serif;">TOTAL : ₹<span id="total">{{totalvalue}}</span></h3>
+            <a href="/place-order" class=" mt-3 btn place-order-btn " style="width: 100%;">Place order</a>
+        </div>
+    </div>
+    }
+    {{else}}
+
+    <h2 class="text-center mt-4 " style="color:#7e2f22 ; font-family:'Times New Roman', Times, serif; font-size:2.3rem">Your Cart is Empty :(</h2>
+    <p></p>
+
+
+    {{/if}}
+
+</section>
+<script>
+    function changeQuantity(cartId, proId, userId, count) {
+        let quantity = parseInt(document.getElementById(proId).innerHTML)
+        count = parseInt(count)
+        $.ajax({
+            url: '/change-product-quantity',
+            data: {
+                cart: cartId,
+                product: proId,
+                count: count,
+                quantity: quantity,
+                user: userId
+            },
+            method: 'post',
+            success: (response) => {
+                // console.log(response)
+                if (response.removeProduct) {
+                    alert("product removed from cart")
+                    location.reload()
+                } else {
+                    document.getElementById(proId).innerHTML = quantity + count
+                    document.getElementById('total').innerHTML = response.total
+
+                }
+            }
+        })
+    }
+    function remove(cartId, proId) {
+        $.ajax({
+            url: '/remove-product',
+            data: {
+                cart: cartId,
+                product: proId
+            },
+            method: 'post',
+            success: (response) => {
+                if (response.status) {
+                    alert("product removed from cart")
+                    location.reload()
+                }
+            }
+        })
+    }
+</script>
+<style>
+    .table-head {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: larger;
+    }
+
+    .remove-btn {
+        background: rgb(117 28 28 / 91%);
+        color: burlywood;
+
+    }
+    .remove-btn:hover{
+        background:rgb(75, 4, 4) ;
+    }
+
+    .place-order-btn {
+        color: burlywood;
+        background: #366309eb;
+
+    }
+    .place-order-btn:hover{
+        background: #224103e7;
+        
+    }
+
+    td {
+        font-size: larger;
+    }
+
+    .cart-item-count {
+        color: white;
+        background: #61371bba;
+        border-radius: 25%;
+        width: 2rem;
+    }
+    .cart-item-count:hover{
+        background:#221105ba;
+    }
+</style>

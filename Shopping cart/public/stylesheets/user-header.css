@@ -1,0 +1,83 @@
+
+   #dropdown-login{
+     background: #363520d4;
+     
+   }
+   .dropdown-item{
+     color: burlywood;
+   }
+   .dropdown-item:hover{
+     background:#363520d4 ;
+   }
+   .dropdown-item:hover{
+     color: burlywood;
+   }
+  #user-header-nav{
+     width: 100%;
+     z-index: 1;
+     position: fixed;
+     background: #363520d4;
+     height: 10%;
+     top: 0;
+     left: 0;
+     right: 0;
+  }
+  #Ary{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 230%;
+    color: rgb(183 144 119);
+  }
+    #btn-back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  background: rgb(123 88 44 / 85%);
+  border-color: rgb(75, 29, 29);
+  border-radius: 50%;
+  
+}
+body{
+  background: rgba(222, 184, 135, 0.089);
+}
+.navbar-brand{
+   color:rgb(131, 42, 1);
+}
+ .items{
+  
+  font-family: Georgia, 'Times New Roman', Times, serif;
+   font-size:larger;
+  color:burlywood;
+  text-decoration: none;
+  margin-bottom: 2rem;
+  
+} 
+.badge{
+  color:burlywood;
+}
+.navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.navbar-toggler.navbar-toggler {
+  border-color: rgb(245, 248, 196);
+} 
+
+/*  change navbar li colors, also active one but not disabled one */
+.navbar ul.navbar-nav li.nav-item a.nav-link {
+  color: #363520
+}
+/* change navbar-toggler inside lines color (stroke) */
+.navbar-light span.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='yellow' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  color: #363520
+}
+/* change hamburger button border color */
+button.navbar-toggler.navbar-toggler-right {
+  border-color: #363520
+}
+/* change navbar background on collapse */
+@media (max-width: 768px) {
+  nav.navbar {
+    background: #363520
+  }
+}

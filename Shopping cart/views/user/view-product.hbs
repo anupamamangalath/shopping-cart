@@ -1,0 +1,176 @@
+<section  class="col-xs-12">
+    <div class="image col-xs-12" >
+        <img src="/images/download(4.4).jpg" style=" width: 100%; height: auto;">
+        <div class="centered">
+            <div class="card" style="width: 37rem; height:12rem;">
+                <div class="card-body">
+                    <h2 class="card-title text-uppercase autumn-card-title mt-2">AUTUMN LEAVES</h2>
+
+                    <a href="/list-product" class="shop btn btn-primary  mt-2">SHOP NOW</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+   
+    <section>
+
+        <div class="text-center " id="sec1">
+            <p class="text-uppercase ">free shipping worldwide</p>
+        </div>
+    </section>
+    <section>
+        <div class="text-center">
+            <h2 class="mt-5 text-uppercase year-round-text">year-round</h2>
+            <hr>
+            <h4 class="must-have-items-text">Must Have Items</h4>
+        </div>
+
+
+
+    </section>
+    <section>
+        <div class="container mt-5 ">
+            <div class="row ">
+                {{#each products}}
+                <div class="col-md-4">
+                    <div class="card" id="pdt-card">
+
+                        <img class="card-img-top" style="height: 21rem;" src="/product-images/{{this._id}}.jpg"
+                            alt="Card image cap">
+                           
+                        {{!-- <a href="/quickView/{{this._id}}" onclick="window.open(this.href,'_parent','resizable=yes,width=SomeSize,height=SomeSize'); return false;">Quick View</a>
+ --}}                        <a type="button" href="/quickView/{{this._id}}" id="check-it-out-btn" class="btn" ><span class="mt-2">Check it out</span></a>
+
+                         
+                    </div>
+                </div>
+            
+
+
+                {{/each}}
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+    <section>
+        <div class="container">
+            <div class="row">
+                <h3></h3>
+            </div>
+        </div>
+    </section>
+</section>
+
+
+<style>
+    #check-it-out-btn {
+        background: #152702c9;
+        width: 100%;
+        height: 4rem;
+        color: burlywood;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: larger;
+        letter-spacing: 5.69999980926514px;
+
+    }
+
+    #check-it-out-btn:hover span {
+        display: none
+    }
+
+    #check-it-out-btn:hover:before {
+        content: "View Details"
+    }
+
+    #pdt-card {
+        width: 16rem;
+        height: 25rem;
+        margin: 3rem;
+        transition: transform .2s;
+
+    }
+
+
+    #pdt-card:hover {
+        -ms-transform: scale(1.2);
+        /* IE 9 */
+        -webkit-transform: scale(1.2);
+        /* Safari 3-8 */
+        transform: scale(1.2);
+    }
+
+    .must-have-items-text {
+        font-family: times new roman, times, serif;
+        letter-spacing: 5.69999980926514px
+    }
+
+    .year-round-text {
+        font-family: times new roman, times, serif;
+
+            {
+                {
+                 !-- text-decoration-line: underline;
+                text-decoration-thickness: -0.7rem;
+                --
+            }
+        }
+
+        letter-spacing: 5.69999980926514px
+    }
+
+    #sec1 {
+        width: 100%;
+        background: #797952;
+        height: 2rem;
+        color: rgb(7, 7, 7);
+        font-family: serif;
+        font-size: 1.3rem;
+    }
+
+    .image {
+        position: relative;
+        text-align: center;
+        color: white;
+    }
+
+    .centered {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .card {
+        background: #82a28033;
+        border: none;
+
+    }
+
+    .autumn-card-title {
+        font-family: cursive;
+        color: #001300;
+        font-size: 3rem;
+
+    }
+
+    .shop {
+        background: #182017;
+        width: 12rem;
+        text-decoration: none;
+        border: none;
+        color: #eddcdc;
+        font-size: large;
+
+    }
+
+    .shop:hover {
+        background: rgb(25, 41, 24);
+
+    }
+
+    .shop:focus {
+        background: rgb(25, 41, 24);
+    }
+</style>

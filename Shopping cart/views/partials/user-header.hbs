@@ -1,0 +1,132 @@
+
+  <div class="header position-fixed col-xs-12" id="user-header-nav"> 
+{{!-- class="position-fixed" id="user-header-nav" --}}
+ <section class="header-2">
+    <div class="header d-lg-flex ">
+  
+ 
+    <nav class="navbar navbar-expand-lg {{!-- navbar-light --}} ">
+      <h5 class="navbar-brand ml-5 mb-1" id="Ary">A R Y</h5>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" ></span> 
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto  mt-lg-0">
+              <li class="nav-item active">
+                    <a class=" ml-5  mb-3 items" href="/" >HOME<span class="sr-only">(current)</span></a>
+                </li>
+               
+                <li class="nav-item ">
+                    <a class="ml-5 mb-3 items" href="/list-product" >SHOP</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="ml-5 mb-3 items" href="/customer-care">CUSTOMER CARE</a>
+                </li>
+                
+                {{#if user}}
+                <li class="nav-item">
+                    <a class=" ml-5 mb-3 items" href="/view-orders" >ORDERS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="ml-5 mb-3 items" href="/cart" > <span class="material-icons">shopping_cart</span> <span class="badge " id="cart-count">{{cartCount}}</span></a>
+                </li>
+                {{/if}}
+                 
+
+                
+            </ul>
+            
+        
+                   <div class=" dropdown ">
+              <a class="navbar-brand dropdown-toggle text-uppercase  ml-5 mb-3 float-right " style="color: burlywood;"  data-toggle="dropdown" >
+                  {{#if user}} 
+                  <span class="material-icons mr-2">person</span>{{user.name}}
+                  {{else}} 
+                  <span class="material-icons mr-2">person</span>LOGIN
+                  {{/if}}
+                  </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="dropdown-login">
+                    {{#if user}}
+                    <a class="dropdown-item" href="/logout">Logout</a>
+                    {{else}}
+                    <a class="dropdown-item" href="/login">Login</a>
+                    {{/if}}
+                    
+                </div>
+
+            </div>
+            
+
+
+
+
+
+
+
+
+
+           {{!-- <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{#if user}}
+                    {{user.name}}
+                    {{else}}
+                    Account
+                    {{/if}}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {{#if user}}
+                    <a class="dropdown-item" href="/logout">Logout</a>
+                    {{else}}
+                    <a class="dropdown-item" href="/login">Login</a>
+                    {{/if}}
+                    
+                </div>
+            </div> --}}
+     
+        </div>
+    </nav> 
+
+</div>
+ </section>
+ <section>
+    <button type="button" class="btn btn-info btn-floating btn-lg" id="btn-back-to-top">^</button>
+</section>
+
+  </div>
+
+
+
+
+ 
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

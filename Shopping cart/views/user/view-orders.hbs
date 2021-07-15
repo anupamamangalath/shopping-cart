@@ -1,0 +1,52 @@
+<section style="margin-top:6rem; margin-bottom:14rem">
+    <div class="container">
+        <div class="row mt-4">
+            <table class="table mt-5">
+                <thead>
+                    <tr>
+                        <th scope="col" class="table-head">Date</th>
+                        <th scope="col" class="table-head">Address</th>
+                        <th scope="col" class="table-head">Pincode</th>
+                        <th scope="col" class="table-head">Mobile</th>
+                        <th scope="col" class="table-head">Amount</th>
+                        <th scope="col" class="table-head">Payment</th>
+                        <th scope="col" class="table-head">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each orderDetails}}
+                    <tr>
+                    
+                        <td>{{this.date}}</td> 
+                        <td>{{this.deliveryDetails.address}}</td>
+                        <td>{{this.deliveryDetails.pincode}}</td>
+                        <td>{{this.deliveryDetails.mobile}}</td>
+                        <td>{{this.total}}</td>
+                        <td>{{this.paymentMethod}}</td>
+                        <td>{{this.status}}</td>
+                        <td>
+                            <a type="button" class="btn ordered-btn" href="/view-ordered-products/{{this._id}}">View Ordered Products</a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<style>
+    .table-head{
+        font-family: 'Times New Roman', Times, serif;
+        font-size: larger;
+        color: rgb(65, 12, 12);
+    }
+    .ordered-btn{
+        color: rgb(223, 220, 206); 
+        background:#4e341df1
+
+    }
+    .ordered-btn:hover{
+        background:#362413f1 ;
+    }
+
+</style>

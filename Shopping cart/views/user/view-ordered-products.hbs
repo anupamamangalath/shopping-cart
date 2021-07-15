@@ -1,0 +1,22 @@
+<section style="margin-top: 7rem; margin-bottom:12rem">
+        <div class="container mt-5">
+            <div class="row">
+                {{#each productDetails}}
+                <div class="col-md-3  col-sm-6 col-xs-12 p-3">
+                    <div class="card" style="width: 15rem; height:25rem;">
+                        <img class="card-img-top" style="height: 14rem;"
+                            src="/product-images/{{this.productdetails._id}}.jpg"
+                            alt="Card image cap"> 
+                        <div class="card-body">
+                            <h5 class="card-title">{{this.productdetails.name}}</h5>
+                            <h7 class="card-text" style="font-weight: bold;">Price: ₹ {{this.productdetails.price}}</h7>
+                            <p class="card-text">Quantity:{{this.quantity}}</p>
+                            <button onclick="addToCart('{{this.item}}','{{this.productdetails.name}}','{{../user}}')" class="btn " style="color: burlywood; background:#316e29">Buy Again</button>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+                
+            </div>
+        </div>
+    </section>

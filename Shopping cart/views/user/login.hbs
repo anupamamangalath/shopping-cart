@@ -1,0 +1,181 @@
+<div class="section" style="background:rgba(201, 201, 112, 0.418) {{!-- background-image: url('/images/bg2.jpg'); --}}" >
+<div class="row" id="row-login" >
+    <div class="col-md-6 m-auto" >
+        <div class="container mt-5 pl-5" >
+            {{!-- <h2 class="text-center">Login</h2>
+            <form action="/login" method="POST">
+                <div class="form-group ">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" name="email" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" placeholder="Enter email">
+                    {{#if loginErrmail}}
+                    <p class="text-danger">{{loginErrmail}}</p>
+                    {{/if}}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" name="password" id="exampleInputPassword1"
+                        placeholder="Password">
+                    {{#if loginErrpass}}
+                    <p class="text-danger">{{loginErrpass}}</p>
+                    {{/if}}
+                </div>
+                <div>
+                    <a href="/signup">Create new account?</a>
+                    <button type="submit" class="btn btn-primary float-right">Submit</button>
+                </div>
+            </form> 
+ --}}
+ 
+            <div class="d-flex justify-content-center h-100" >
+                <div class="user_card">
+                    <div class="d-flex justify-content-center">
+                        <div class="brand_logo_container">
+                            <img src='images/download(2).jpg' class="brand_logo" alt="Logo">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center form_container">
+                        <form action="/login" method="POST">
+                            <div class="input-group mb-2" >
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                </div>
+                                <input type="email" class="form-control" name="email" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="Enter email">
+                            </div>
+                            <div class="input-group-append">
+                             {{!--    <div class="input-group mb-3"></div> --}}
+                            {{#if loginErrmail}}
+                                <p class=" text-danger">{{loginErrmail}}</p>
+                            {{/if}}
+                            </div>
+                            <div class="input-group mb-2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></span>
+                                </div>
+                                <input type="password" class="form-control" name="password" id="exampleInputPassword1"
+                                    placeholder="Password">
+                            </div>
+                            <div>
+                            {{#if loginErrpass}}
+                                <p class="text-danger">{{loginErrpass}}</p>
+                                {{/if}}
+                                </div>
+                                
+                            <div class="d-flex justify-content-center mt-3 login_container">
+                                <button type="submit" name="button" class="btn login_btn">Login</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-center links" style="color: #d07a3c;">
+                            Don't have an account? <a href="/signup" class="ml-2" style="color: #c9c9c9;">Sign Up</a>
+                        </div>
+                        {{!-- <div class="d-flex justify-content-center links">
+                            <a href="#">Forgot your password?</a>
+                        </div> --}}
+                    </div>
+
+
+                </div>
+            </div> 
+
+
+        </div>
+    </div>
+</div>
+</div>
+<style>
+    
+    .section {
+        padding: 5px 0;
+        position: relative;
+        background: #FFFFFF;
+    }
+    html,body{
+
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Numans', sans-serif;
+}
+    #row-login {
+
+        height: 21rem;
+        margin-bottom: 13rem;
+        margin-top: 10rem;
+    }
+
+    .user_card {
+        height: 400px;
+        width: 370px;
+    
+        margin-bottom: auto;
+        background: #2a3313e3;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding:10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 15px;
+
+    }
+
+    .brand_logo_container {
+        position: absolute;
+        height: 170px;
+        width: 170px;
+        top: -75px;
+        border-radius: 50%;
+        background: #7d733e;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .brand_logo {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        border: 2px solid white;
+    }
+
+    .form_container {
+        margin-top: 100px;
+    }
+
+    .login_btn {
+        width: 100%;
+        color: burlywood; 
+        background:#6e4929
+    }
+
+    .login_btn:focus {
+        box-shadow: none !important;
+        outline: 0px !important;
+    }
+
+    .login_container {
+        padding: 0 2rem;
+    }
+
+    .input-group-text {
+        background: #814a38f5 !important;
+        color: white !important;
+        border: 0 !important;
+        border-radius: 0.25rem 0 0 0.25rem !important;
+    }
+
+    .input_user,
+    .input_pass:focus {
+        box-shadow: none !important;
+        outline: 0px !important;
+    }
+
+    .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+        background-color: #c0392b !important;
+    }
+</style>

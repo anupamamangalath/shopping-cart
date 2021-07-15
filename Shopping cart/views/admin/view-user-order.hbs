@@ -1,0 +1,52 @@
+<section style="margin-top: 4rem;margin-bottom:5rem;">
+    <div class="container bg-light p-3 pl-4 mt-4">
+        <div class="row">
+            <div class="user-details p-4">
+                <h3>{{userdetails.name}}</h3>
+                <h5>{{userdetails.email}}</h5>
+            
+            <div class="p-3">
+                <h2 class="ml-3">ORDERS</h2>
+                <hr>
+                {{#each orderDetails}}
+                <div class="card float-left m-3 p-3 bg-white" style="width: 15rem; height:25rem; " >
+                   {{!--  <div class="card-body"> --}}
+                        <h5 >ORDER NO {{inc @ index}}</h5><hr>
+                        <h7 style="font-weight: bolder;">DELIVERY DETAILS</h7>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td><span style="font-weight:500;">Address:</span> {{this.deliverydetails.0.delivery.address}}</td>
+                                </tr>
+                                <tr>
+                                    <td><span style="font-weight:500;">Pincode:</span>  {{this.deliverydetails.0.delivery.pincode}}</td>
+                                </tr>
+                                <tr>
+                                    <td><span style="font-weight:500;">Mobile:</span> {{this.deliverydetails.0.delivery.mobile}}</td>
+                                </tr>
+                                
+                            </tbody>
+                        </table><br>
+                       {{!--  <p class="card-text"></p>
+                        <p class="card-text"></p>
+                        <p class="card-text"></p> --}}
+                        <h7 style="font-weight: bolder;">PRODUCTS:</h7>
+                        <table >
+                            <tbody>
+                                {{#each this.productdetails}}
+                                <tr>
+                                    <td>{{product.name}}</td>
+                                    <td>{{product.price}}</td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                        <hr>
+                        <h5>TOTAL&emsp;&emsp;&emsp; : {{this.otherdetails.0.total}}</h5>
+                </div>
+                {{/each}}
+            </div>
+            
+            </div>
+    </div>
+</section>
